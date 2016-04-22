@@ -15,7 +15,7 @@ namespace MyTodo.Controllers
         {
             return View();
         }
-        
+        //Recive date from db 
        public JsonResult GetTodoCategorys()
         {
             var db = new  TodoEntities();
@@ -51,7 +51,7 @@ namespace MyTodo.Controllers
             var TodoList = db.todolist.ToList();           
             return Json(TodoList, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
         public JsonResult AddTodo(string newTodoText, string newTodoNote)
         {
             var db = new TodoEntities();
@@ -60,7 +60,7 @@ namespace MyTodo.Controllers
             var TodoList = db.todolist.ToList();
             return Json(TodoList, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
         public JsonResult DeleteTodo(todolist delTodo)
         {
             var db = new TodoEntities();
