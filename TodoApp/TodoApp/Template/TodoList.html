@@ -1,0 +1,32 @@
+﻿
+<div ng-controller="mainController">
+
+    <table >
+        <tr >           
+            <td class="text-right">
+                <button class="btn btn-danger" ng-click="goToTodoList('CategoryList')">X</button>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <h1>ToDoList</h1>
+    <button class="btn btn-danger" ng-click="goToTodoList('AddTodo')">+</button>
+
+    <br />
+    <br />
+    <table class="table table-striped">
+
+        <tr ng-repeat="Todos in TodoList" ">
+            <div >
+                <td>{{Todos.TodoText}}</td>
+                <td>{{Todos.TodoNote}}</td>
+                <td>{{Todos.Priority}}</td>
+                <td>{{Todos.TodoDate | date: mediumDate}}</td>
+            </div>
+            <td class="text-right">
+                <button class="btn btn-danger"  ng-click="deleteTodo(Todos)" >X</button>
+            </td>
+        </tr>
+    </table>
+</div>

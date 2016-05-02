@@ -1,0 +1,18 @@
+﻿<div ng-controller="mainController">
+    <h1>Add Todo</h1>
+    <label>TodoText</label>
+    <br />
+    <br />
+    <input type="text" value="Task Name" required ng-model="newTodoText" />
+
+    <br />
+    <br />
+    <label>TodoNote</label>
+    <br />
+
+    <textarea cols="50" rows="10" required ng-model="newTodoNote"></textarea>
+    <br />
+    <br />
+    <a href="" class="btn btn-primary" ng-click="addTodo(); goToTodoList('TodoList')" >Add</a>
+    
+</div>
