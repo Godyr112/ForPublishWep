@@ -185,6 +185,7 @@
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ngMidwayTester.js" />
     <Content Include="Scripts\TodoApp.js" />
     <Content Include="Template\AddTodo.html" />
     <Content Include="Template\CategoryList.html" />

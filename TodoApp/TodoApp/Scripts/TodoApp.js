@@ -14,6 +14,11 @@ TodoApp.config(["$routeProvider", '$locationProvider', function ($routeProvider,
              templateUrl: "Template/AddTodo.html",
              controller: "mainController"
          })
+        .when("/", {
+            templateUrl: "Template/CategoryList.html",
+            controller: "mainController"
+        })
+         
         .otherwise({
             redirectTo: "/CategoryList"
         })
@@ -35,12 +40,12 @@ TodoApp.config(["$routeProvider", '$locationProvider', function ($routeProvider,
 
 TodoApp.controller("mainController", function ($scope, $http, $location) {
     
-
+   
+    
     //Show categorys
     $http.get('/Home/GetTodoCategorys')
         .success(function (result) {
             $scope.CategoryList = result;
-
         })
         .error(function (data) {
             console.log(data)
@@ -48,17 +53,18 @@ TodoApp.controller("mainController", function ($scope, $http, $location) {
 
     //show to do items
    
-   
+  
         $http.get('/Home/GetTodoList')
          .success(function (result) {
-             $scope.TodoList = result;
+             $scope.TodoList = result;            
          })
          .error(function (data) {
              console.log(data)
          });
 
        
-    
+      
+
   
 
     //Add new ategory
@@ -78,8 +84,7 @@ TodoApp.controller("mainController", function ($scope, $http, $location) {
     $scope.deleteCategory = function (CategoryList) {
         $http.post("/Home/DeleteCategory", { delCategory: CategoryList })
         .success(function (result) {
-            $scope.CategoryList = result;
-            
+            $scope.CategoryList = result;            
         })
         .error(function (data) {
             console.log(data)
@@ -89,21 +94,21 @@ TodoApp.controller("mainController", function ($scope, $http, $location) {
 
 
    // $scope.search();
-  
+    
 
 
-    $scope.goToTodoList = function (hash) {
+    $scope.goToTodoList = function (hash) {        
         $location.path(hash)
     }
+
+ 
 
     $scope.newTodoText = "";
     $scope.newTodoNote = "";
     $scope.addTodo = function () {
-        $http.post("/Home/AddTodo", { newTodoText: $scope.newTodoText, newTodoNote: $scope.newTodoNote })
+        $http.post("/Home/AddTodo", { newTodoText: $scope.newTodoText, newTodoNote: $scope.newTodoNote, newTodoCategoryId: $scope.newTodoCategoryId })
         .success(function (result) {
-            $scope.TodoList = result;
-
-           
+            $scope.TodoList = result;          
         })
         .error(function (data) {
             console.log(data)
@@ -115,7 +120,6 @@ TodoApp.controller("mainController", function ($scope, $http, $location) {
         $http.post("/Home/DeleteTodo", { delTodo: TodoList })
         .success(function (result) {
             $scope.TodoList = result;
-
         })
         .error(function (data) {
             console.log(data)
@@ -124,3 +128,12 @@ TodoApp.controller("mainController", function ($scope, $http, $location) {
 
 });
 
+
+    $scope.categories = [];
+    $scope.selectedCategory = null;
+  
+    $scope.goToCategory = function (category) {
+
+        $scope.CatId = category.CategoryId;
+    }
+    

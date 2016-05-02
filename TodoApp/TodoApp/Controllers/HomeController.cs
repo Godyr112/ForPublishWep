@@ -52,10 +52,10 @@ namespace MyTodo.Controllers
             return Json(TodoList, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddTodo(string newTodoText, string newTodoNote)
+        public JsonResult AddTodo(string newTodoText, string newTodoNote, int  newTodoCategoryId)
         {
             var db = new tododbEntities();
-            db.todolist.Add(new todolist() { TodoText = newTodoText, TodoNote = newTodoNote, CategoryId = 1, Priority = "0", Status = "0" });
+            db.todolist.Add(new todolist() { TodoText = newTodoText, TodoNote = newTodoNote, CategoryId = newTodoCategoryId, Priority = "0", Status = "0" });
             db.SaveChanges();
             var TodoList = db.todolist.ToList();
             return Json(TodoList, JsonRequestBehavior.AllowGet);

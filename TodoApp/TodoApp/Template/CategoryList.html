@@ -5,7 +5,8 @@
     <a href="" class="btn btn-primary" ng-click="addCategory()">Add Category</a>
     <table class="table table-striped">
         <tr ng-repeat="Categorys in CategoryList">
-            <td ng-click="goToTodoList('TodoList')">{{Categorys.CategoryName}}</td>
+            <td ng-click="goToTodoList('TodoList')" >{{Categorys.CategoryName }} </td>
+           
             <td class="text-right">
                 <button class="btn btn-danger" ng-click="deleteCategory(Categorys)">X</button>
             </td>

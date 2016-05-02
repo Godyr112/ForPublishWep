@@ -1,4 +1,5 @@
 ﻿<div ng-controller="mainController">
+    <button class="btn btn-danger" ng-click="goToTodoList('TodoList')">X</button> 
     <h1>Add Todo</h1>
     <label>TodoText</label>
     <br />
@@ -13,6 +14,13 @@
     <textarea cols="50" rows="10" required ng-model="newTodoNote"></textarea>
     <br />
     <br />
-    <a href="" class="btn btn-primary" ng-click="addTodo(); goToTodoList('TodoList')" >Add</a>
-    
+    <select name="singleSelect" id="singleSelect" ng-model="newTodoCategoryId">
+       
+        <option ng-repeat="Category in CategoryList"  value="{{Category.CategoryId}}">{{Category.CategoryName}}</option>
+    </select>
+        <br />
+        <br />
+
+        <a href="" class="btn btn-primary" ng-click="addTodo(); goToTodoList('TodoList')">Add</a>
+
 </div>

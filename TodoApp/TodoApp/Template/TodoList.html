@@ -1,30 +1,25 @@
 ﻿
 <div ng-controller="mainController">
-
-    <table >
-        <tr >           
-            <td class="text-right">
-                <button class="btn btn-danger" ng-click="goToTodoList('CategoryList')">X</button>
-            </td>
-        </tr>
-    </table>
-    
-    
+    <button class="btn btn-danger" ng-click="goToTodoList('CategoryList')">X</button> 
     <h1>ToDoList</h1>
     <button class="btn btn-danger" ng-click="goToTodoList('AddTodo')">+</button>
 
     <br />
     <br />
-    <table class="table table-striped">
+    <select name="singleSelect" id="singleSelect" ng-model="selectCategory">
 
-        <tr ng-repeat="Todos in TodoList" ">
-            <div >
+        <option ng-repeat="Category in CategoryList" value="{{Category.CategoryId}}">{{Category.CategoryName}}</option>
+    </select>
+    <br />
+    <br />
+   
+    <table class="table table-striped">
+        <tr ng-repeat="Todos in TodoList" ng-show="Todos.CategoryId==selectCategory"  >            
                 <td>{{Todos.TodoText}}</td>
                 <td>{{Todos.TodoNote}}</td>
                 <td>{{Todos.Priority}}</td>
-                <td>{{Todos.TodoDate | date: mediumDate}}</td>
-            </div>
-            <td class="text-right">
+                <td angular.isDate(Todos.TodoDate)>{{Todos.TodoDate | date:"MM/dd/yyyy @ h:mma" }}</tdangular.isDate(Todos.TodoDate)>            
+                <td class="text-right">
                 <button class="btn btn-danger"  ng-click="deleteTodo(Todos)" >X</button>
             </td>
         </tr>
